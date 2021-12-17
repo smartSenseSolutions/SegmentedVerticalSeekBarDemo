@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SegmentedVerticalSeekBar">
+        <attr name="maxValue" format="integer" />
+        <attr name="minValue" format="integer"/>
+        <attr name="currentValue" format="integer" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="step" format="integer"/>
+
+        <attr name="delimiterColor" format="color" />
+        <attr name="progressColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+
+        <attr name="clockwise" format="boolean" />
+        <attr name="enabled" format="boolean" />
+        <attr name="touchDisabled" format="boolean" />
+        <attr name="isAllRadius" format="boolean" />
+        <attr name="pyramidViewEnable" format="boolean"/>
+
+    </declare-styleable>
+
+</resources>

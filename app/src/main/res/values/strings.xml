@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SegmentedVerticalSeekBar</string>
+
+    <string name="current_value_">Current value is:</string>
+    <string name="stack_view">Stack View</string>
+    <string name="pyramid_view">Pyramid View</string>
+    <string name="enable_touch">Enable Touch</string>
+    <string name="disable_touch">Disable Touch</string>
+    <string name="anti_clockwise">Anti Clockwise</string>
+    <string name="clockwise">Clockwise</string>
+    <string name="radius_for_all">Radius for all</string>
+    <string name="max_5">Max 5</string>
+    <string name="max_10">Max 10</string>
+    <string name="max_20">Max 20</string>
+</resources>

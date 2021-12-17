@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <com.ss.svsdemo.SegmentedVerticalSeekBar
+            android:id="@+id/svsLevelView"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            app:backgroundColor="@color/color_background"
+            app:clockwise="true"
+            app:cornerRadius="10dp"
+            app:currentValue="2"
+            app:delimiterColor="@color/white"
+            app:isAllRadius="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxValue="5"
+            app:progressColor="@color/color_progress"
+            app:pyramidViewEnable="true"
+            app:step="1"
+            app:touchDisabled="false" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrentLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/sans_medium"
+            android:text="@string/current_value_"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/tvCurrentValue"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/svsLevelView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrentValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/sans_bold"
+            android:textColor="@color/color_progress"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvCurrentLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvCurrentLabel"
+            app:layout_constraintTop_toTopOf="@id/tvCurrentLabel"
+            tools:text="5" />
+
+        <Button
+            android:id="@+id/btnIsTriangleViewEnable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sans_regular"
+            android:text="@string/pyramid_view"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/btnIsAllRadius"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrentLabel" />
+
+        <Button
+            android:id="@+id/btnIsAllRadius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sans_regular"
+            android:text="@string/radius_for_all"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnIsTriangleViewEnable"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrentLabel" />
+
+        <Button
+            android:id="@+id/btnTouchToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sans_regular"
+            android:text="@string/disable_touch"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/btnIsAllRadius"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnIsTriangleViewEnable" />
+
+        <Button
+            android:id="@+id/btnClockWise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sans_regular"
+            android:text="@string/clockwise"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnTouchToggle"
+            app:layout_constraintTop_toBottomOf="@id/btnIsAllRadius" />
+
+        <Button
+            android:id="@+id/btnMaxValue5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sans_regular"
+            android:text="@string/max_5"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/btnMaxValue10"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnTouchToggle" />
+
+        <Button
+            android:id="@+id/btnMaxValue10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sans_regular"
+            android:text="@string/max_10"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnMaxValue20"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnMaxValue5"
+            app:layout_constraintTop_toBottomOf="@id/btnClockWise" />
+
+        <Button
+            android:id="@+id/btnMaxValue20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sans_regular"
+            android:text="@string/max_20"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnMaxValue10"
+            app:layout_constraintTop_toBottomOf="@id/btnClockWise" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
