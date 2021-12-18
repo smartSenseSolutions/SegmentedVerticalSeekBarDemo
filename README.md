@@ -1,16 +1,16 @@
-**SegmentedVerticalSeekBar**
+# SegmentedVerticalSeekBar
 
 
 It is an Android Vertical Seekbar with segments developed in Kotlin. It offers multiple customization attributes to create a Slider/Seekbar based on your requirements.
 
-**Demo**
+## Demo
 
 ![First](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/1.gif)
 ![Second](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/2.gif)
 ![Third](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/3.gif)
 ![Forth](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/4.gif)
 
-**Setup**
+## Setup
 
 Add the Maven Central repository to your project's root ```build.gradle``` file
 ```
@@ -26,7 +26,7 @@ Add the dependency in your app ```build.gradle``` file:
 implementation 'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.0'
 
 ```
-**Usage**
+## Usage
 
 Sample implementation [here](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/tree/main/app)
 
@@ -77,7 +77,7 @@ svsLevelView.setOnBoxedPointsChangeListener(object :
         })
 ```
 
-**Attributes**
+## Attributes
 
 Following are the various attributes available to customize the look and feel of the Seekbar:
 
@@ -109,11 +109,11 @@ Following are the various attributes available to customize the look and feel of
  
  
 
-**iOS Library**
+## iOS Library
 
 Check our iOS Library also [SSVerticalSegmentsSlider](https://github.com/smartSenseSolutions/SSVerticalSegmentsSlider)
  
-**License**
+## License
 ```
 Copyright 2021 SmartSense Solutions
 Licensed under the Apache License, Version 2.0 (the "License");
