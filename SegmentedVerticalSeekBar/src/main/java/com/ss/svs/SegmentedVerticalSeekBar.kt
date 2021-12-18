@@ -1,4 +1,4 @@
-package com.ss.svsdemo
+package com.ss.svs
 
 import android.content.Context
 import android.graphics.*
@@ -123,32 +123,38 @@ class SegmentedVerticalSeekBar : View {
         var botY = topY - mSegmentHeight
 
         val containerRectanglePaint = buildRectanglePaint(backColor)
-        if(mClockwise){
-            for (i in 0 until max) {
-                if(mPyramidViewEnable){
+        if(mPyramidViewEnable){
+            if(mClockwise){
+                for (i in 0 until max) {
                     if(i>0){
                         leftX += gapSize
                         rightX -= gapSize
                     }
+
+                    drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(),
+                        containerRectanglePaint)
+                    topY -= mSegmentHeight + delimiterSize
+                    botY = topY - mSegmentHeight
                 }
+            }else{
+                var lastLeftX = ((max - 1) * gapSize)
+                var lastrightX = (rightX - ((max - 1) * gapSize))
 
-                drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(),
-                    containerRectanglePaint)
-                topY -= mSegmentHeight + delimiterSize
-                botY = topY - mSegmentHeight
-            }
-        }else{
-            var lastLeftX = ((max - 1) * gapSize)
-            var lastrightX = (rightX - ((max - 1) * gapSize))
-
-            for (i in 0 until max) {
-                if(mPyramidViewEnable){
+                for (i in 0 until max) {
                     if(i>0){
                         lastLeftX -= gapSize
                         lastrightX += gapSize
                     }
+
+                    drawRoundedRect(canvas, lastLeftX.toFloat(), topY.toFloat(), lastrightX.toFloat(), botY.toFloat(),
+                        containerRectanglePaint)
+                    topY -= mSegmentHeight + delimiterSize
+                    botY = topY - mSegmentHeight
                 }
-                drawRoundedRect(canvas, lastLeftX.toFloat(), topY.toFloat(), lastrightX.toFloat(), botY.toFloat(),
+            }
+        }else{
+            for (i in 0 until max) {
+                drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(),
                     containerRectanglePaint)
                 topY -= mSegmentHeight + delimiterSize
                 botY = topY - mSegmentHeight
@@ -166,31 +172,34 @@ class SegmentedVerticalSeekBar : View {
         var botY = topY - mSegmentHeight
 
         val fillRectanglePaint = buildRectanglePaint(progressColor)
-
-        if(mClockwise){
-            for (i in 0 until mCurrentValue) {
-                if(mPyramidViewEnable){
+        if(mPyramidViewEnable){
+            if(mClockwise){
+                for (i in 0 until mCurrentValue) {
                     if(i>0){
                         leftX += gapSize
                         rightX -= gapSize
                     }
+                    drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(), fillRectanglePaint)
+                    topY -= mSegmentHeight + delimiterSize
+                    botY = topY - mSegmentHeight
                 }
-                drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(), fillRectanglePaint)
-                topY -= mSegmentHeight + delimiterSize
-                botY = topY - mSegmentHeight
-            }
-        }else{
-            var lastLeftX = ((max - 1) * gapSize)
-            var lastrightX = (rightX - ((max - 1) * gapSize))
+            }else{
+                var lastLeftX = ((max - 1) * gapSize)
+                var lastrightX = (rightX - ((max - 1) * gapSize))
 
-            for (i in 0 until mCurrentValue) {
-                if(mPyramidViewEnable){
+                for (i in 0 until mCurrentValue) {
                     if(i>0){
                         lastLeftX -= gapSize
                         lastrightX += gapSize
                     }
+                    drawRoundedRect(canvas, lastLeftX.toFloat(), topY.toFloat(), lastrightX.toFloat(), botY.toFloat(), fillRectanglePaint)
+                    topY -= mSegmentHeight + delimiterSize
+                    botY = topY - mSegmentHeight
                 }
-                drawRoundedRect(canvas, lastLeftX.toFloat(), topY.toFloat(), lastrightX.toFloat(), botY.toFloat(), fillRectanglePaint)
+            }
+        }else{
+            for (i in 0 until mCurrentValue) {
+                drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(), fillRectanglePaint)
                 topY -= mSegmentHeight + delimiterSize
                 botY = topY - mSegmentHeight
             }

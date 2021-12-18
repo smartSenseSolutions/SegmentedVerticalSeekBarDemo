@@ -7,11 +7,11 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.ss.svsdemo"
+        applicationId "com.ss.svs"
         minSdk 21
         targetSdk 31
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

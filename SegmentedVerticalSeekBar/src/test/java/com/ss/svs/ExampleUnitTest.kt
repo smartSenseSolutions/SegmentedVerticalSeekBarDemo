@@ -1,4 +1,4 @@
-package com.ss.svsdemo
+package com.ss.svs
 
 import org.junit.Test
 

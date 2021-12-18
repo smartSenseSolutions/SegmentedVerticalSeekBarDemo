@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <com.ss.svsdemo.SegmentedVerticalSeekBar
+        <com.ss.svs.SegmentedVerticalSeekBar
             android:id="@+id/svsLevelView"
             android:layout_width="150dp"
             android:layout_height="200dp"
@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:maxValue="5"
             app:progressColor="@color/color_progress"
-            app:pyramidViewEnable="true"
+            app:pyramidViewEnable="false"
             app:step="1"
             app:touchDisabled="false" />
 

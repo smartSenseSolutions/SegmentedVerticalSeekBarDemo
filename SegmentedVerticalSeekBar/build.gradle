@@ -5,7 +5,7 @@ plugins {
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.smartsensesolutions'
-    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_VERSION = '1.0.1'
     PUBLISH_ARTIFACT_ID = 'SegmentedVerticalSeekBar'
     PUBLISH_DESCRIPTION = 'Segmented Vertical SeekBar Android SDK'
     PUBLISH_URL = 'https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo'
@@ -28,8 +28,8 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

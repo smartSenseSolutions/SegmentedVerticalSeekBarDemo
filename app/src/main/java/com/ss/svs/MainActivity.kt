@@ -1,4 +1,4 @@
-package com.ss.svsdemo
+package com.ss.svs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.ss.svsdemo.databinding.ActivityMainBinding
+import com.ss.svs.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -53,17 +53,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.svsLevelView.setOnBoxedPointsChangeListener(object :
-            com.ss.svsdemo.SegmentedVerticalSeekBar.OnValuesChangeListener {
-            override fun onProgressChanged(segmentedPointsSeekBar: com.ss.svsdemo.SegmentedVerticalSeekBar?, progress: Int) {
+            com.ss.svs.SegmentedVerticalSeekBar.OnValuesChangeListener {
+            override fun onProgressChanged(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?, progress: Int) {
                 activityMainBinding.tvCurrentValue.text = progress.toString()
             }
 
-            override fun onStartTrackingTouch(segmentedPointsSeekBar: com.ss.svsdemo.SegmentedVerticalSeekBar?) {
+            override fun onStartTrackingTouch(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?) {
                 Log.e("MainAct","onStartTrackingTouch: "+segmentedPointsSeekBar?.value)
 
             }
 
-            override fun onStopTrackingTouch(segmentedPointsSeekBar: com.ss.svsdemo.SegmentedVerticalSeekBar?) {
+            override fun onStopTrackingTouch(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?) {
                 Log.e("MainAct","onStopTrackingTouch: "+segmentedPointsSeekBar?.value)
                 activityMainBinding.svsLevelView.value = segmentedPointsSeekBar?.value!!
             }
