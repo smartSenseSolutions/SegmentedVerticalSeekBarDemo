@@ -23,7 +23,7 @@ allprojects {
 
 Add the dependency in your app ```build.gradle``` file:
 ``` gradle
-implementation 'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.0'
+implementation 'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.1'
 
 ```
 ## Usage
