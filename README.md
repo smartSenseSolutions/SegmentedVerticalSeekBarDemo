@@ -79,7 +79,7 @@ svsLevelView.setOnBoxedPointsChangeListener(object :
 
 ## Attributes
 
-Following are the various attributes available to customize the look and feel of the Seekbar:
+Following are the various attributes available to customize the look and feel of the Seekbar.
 
 **maxValue:** Maximum value of segments to be drawn for the Seekbar View.
 
