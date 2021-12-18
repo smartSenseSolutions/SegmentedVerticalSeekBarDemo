@@ -33,7 +33,7 @@ Sample implementation [here](https://github.com/smartSenseSolutions/SegmentedVer
 Use the view in your layout.xml by declaring:
 
 ``` xml
-	<com.ss.svsdemo.SegmentedVerticalSeekBar
+	<com.ss.svs.SegmentedVerticalSeekBar
             android:id="@+id/svsLevelView"
             android:layout_width="150dp"
             android:layout_height="200dp"
@@ -59,17 +59,17 @@ Use setOnBoxedPointsChangeListener in your activity/fragment to get current prog
 
 ``` kotlin
 svsLevelView.setOnBoxedPointsChangeListener(object :
-            com.ss.svsdemo.SegmentedVerticalSeekBar.OnValuesChangeListener {
-            override fun onProgressChanged(segmentedPointsSeekBar: com.ss.svsdemo.SegmentedVerticalSeekBar?, progress: Int) {
+            com.ss.svs.SegmentedVerticalSeekBar.OnValuesChangeListener {
+            override fun onProgressChanged(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?, progress: Int) {
                 activityMainBinding.tvCurrentValue.text = progress.toString()
             }
  
-            override fun onStartTrackingTouch(segmentedPointsSeekBar: com.ss.svsdemo.SegmentedVerticalSeekBar?) {
+            override fun onStartTrackingTouch(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?) {
                 Log.e("MainAct","onStartTrackingTouch: "+segmentedPointsSeekBar?.value)
  
             }
  
-            override fun onStopTrackingTouch(segmentedPointsSeekBar: com.ss.svsdemo.SegmentedVerticalSeekBar?) {
+            override fun onStopTrackingTouch(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?) {
                 Log.e("MainAct","onStopTrackingTouch: "+segmentedPointsSeekBar?.value)
                 activityMainBinding.svsLevelView.value = segmentedPointsSeekBar?.value!!
             }
