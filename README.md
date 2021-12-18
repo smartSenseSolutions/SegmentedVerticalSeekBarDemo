@@ -5,10 +5,10 @@ It is an Android Vertical Seekbar with segments developed in Kotlin. It offers m
 
 **Demo**
 
-![Alt text](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/1.gif)
-![Alt text](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/2.gif)
-![Alt text](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/3.gif)
-![Alt text](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/4.gif)
+![First](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/1.gif)
+![Second](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/2.gif)
+![Third](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/3.gif)
+![Forth](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/4.gif)
 
 **Setup**
 
