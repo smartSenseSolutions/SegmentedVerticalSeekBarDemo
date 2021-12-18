@@ -12,7 +12,7 @@ It is an Android Vertical Seekbar with segments developed in Kotlin. It offers m
 
 **Setup**
 
-Add the Maven Central repository to your project's root “build.gradle” file
+Add the Maven Central repository to your project's root ```build.gradle``` file
 ```
 allprojects {
     repositories {
@@ -21,7 +21,7 @@ allprojects {
 }
 ```
 
-Add the dependency in your app “build.gradle” file:
+Add the dependency in your app ```build.gradle``` file:
 ```
 implementation'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.0'
 
