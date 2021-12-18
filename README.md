@@ -13,7 +13,7 @@ It is an Android Vertical Seekbar with segments developed in Kotlin. It offers m
 ## Setup
 
 Add the Maven Central repository to your project's root ```build.gradle``` file
-```
+``` gradle
 allprojects {
     repositories {
         mavenCentral()
@@ -22,7 +22,7 @@ allprojects {
 ```
 
 Add the dependency in your app ```build.gradle``` file:
-```
+``` gradle
 implementation 'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.0'
 
 ```
@@ -32,7 +32,7 @@ Sample implementation [here](https://github.com/smartSenseSolutions/SegmentedVer
 
 Use the view in your layout.xml by declaring:
 
-```
+``` xml
 	<com.ss.svsdemo.SegmentedVerticalSeekBar
             android:id="@+id/svsLevelView"
             android:layout_width="150dp"
@@ -57,7 +57,7 @@ Use the view in your layout.xml by declaring:
 
 Use setOnBoxedPointsChangeListener in your activity/fragment to get current progress of seekbar:
 
-```
+``` kotlin
 svsLevelView.setOnBoxedPointsChangeListener(object :
             com.ss.svsdemo.SegmentedVerticalSeekBar.OnValuesChangeListener {
             override fun onProgressChanged(segmentedPointsSeekBar: com.ss.svsdemo.SegmentedVerticalSeekBar?, progress: Int) {
