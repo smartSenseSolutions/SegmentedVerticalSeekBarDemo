@@ -28,6 +28,8 @@ implementation 'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.1'
 ```
 ## Usage
 
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-SegmentedVerticalSeekBarDemo-green.svg?style=flat )]( https://android-arsenal.com/details/1/8270 )
+
 Sample implementation [here](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/tree/main/app)
 
 Use the view in your layout.xml by declaring:
