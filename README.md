@@ -107,8 +107,9 @@ Following are the various attributes available to customize the look and feel of
 **enabled:** Boolean to enable/disable the Seekbar view completely.
  
  
+## MAD (Modern Android Development) Scorecard 
  
- 
+![Mad Score](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/mad_score.png)
 
 ## iOS Library
 
