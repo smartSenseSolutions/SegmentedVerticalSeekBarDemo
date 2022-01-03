@@ -1,6 +1,6 @@
 # SegmentedVerticalSeekBar
 
-[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-SegmentedVerticalSeekBarDemo-green.svg?style=flat )]( https://android-arsenal.com/details/1/8270 )
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SegmentedVerticalSeekBarDemo-blue.svg?style=flat)](https://android-arsenal.com/details/3/8270)
 
 It is an Android Vertical Seekbar with segments developed in Kotlin. It offers multiple customization attributes to create a Slider/Seekbar based on your requirements.
 
