@@ -53,19 +53,23 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.svsLevelView.setOnBoxedPointsChangeListener(object :
-            com.ss.svs.SegmentedVerticalSeekBar.OnValuesChangeListener {
-            override fun onProgressChanged(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?, progress: Int) {
+            SegmentedVerticalSeekBar.OnValuesChangeListener {
+            override fun onProgressChanged(segmentedPointsSeekBar: SegmentedVerticalSeekBar, progress: Int) {
                 activityMainBinding.tvCurrentValue.text = progress.toString()
             }
 
-            override fun onStartTrackingTouch(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?) {
-                Log.e("MainAct","onStartTrackingTouch: "+segmentedPointsSeekBar?.value)
-
+            override fun onStartTrackingTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar) {
+                Log.e("MainAct","onStartTrackingTouch: "+segmentedPointsSeekBar.value)
             }
 
-            override fun onStopTrackingTouch(segmentedPointsSeekBar: com.ss.svs.SegmentedVerticalSeekBar?) {
-                Log.e("MainAct","onStopTrackingTouch: "+segmentedPointsSeekBar?.value)
-                activityMainBinding.svsLevelView.value = segmentedPointsSeekBar?.value!!
+            override fun onStopTrackingTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar) {
+                Log.e("MainAct","onStopTrackingTouch: "+segmentedPointsSeekBar.value)
+                activityMainBinding.svsLevelView.value = segmentedPointsSeekBar.value
+            }
+
+            override fun onStopTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar) {
+                Log.e("MainAct","onStopTouch: "+segmentedPointsSeekBar.value)
+                activityMainBinding.svsLevelView.value = segmentedPointsSeekBar.value
             }
 
         })

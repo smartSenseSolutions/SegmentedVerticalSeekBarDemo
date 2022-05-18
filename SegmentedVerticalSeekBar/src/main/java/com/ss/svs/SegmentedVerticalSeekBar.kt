@@ -3,6 +3,7 @@ package com.ss.svs
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
@@ -266,9 +267,7 @@ class SegmentedVerticalSeekBar : View {
             this.parent.requestDisallowInterceptTouchEvent(true)
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStartTrackingTouch(
-                        this
-                    )
+                    if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStartTrackingTouch(this)
                     if (!mTouchDisabled) {
                         updateOnTouch(event)
                     }
@@ -276,22 +275,16 @@ class SegmentedVerticalSeekBar : View {
                 MotionEvent.ACTION_MOVE -> {
                     if (!mTouchDisabled) {
                         updateOnTouch(event)
-                        if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStopTrackingTouch(
-                            this
-                        )
+                        if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStopTrackingTouch(this)
                     }
                 }
                 MotionEvent.ACTION_UP -> {
-                    if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStopTrackingTouch(
-                        this
-                    )
+                    if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStopTouch(this)
                     isPressed = false
                     this.parent.requestDisallowInterceptTouchEvent(false)
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStopTrackingTouch(
-                        this
-                    )
+                    if (mOnValuesChangeListener != null) mOnValuesChangeListener!!.onStopTouch(this)
                     isPressed = false
                     this.parent.requestDisallowInterceptTouchEvent(false)
                 }
@@ -359,9 +352,10 @@ class SegmentedVerticalSeekBar : View {
     }
 
     interface OnValuesChangeListener {
-        fun onProgressChanged(segmentedPointsSeekBar: SegmentedVerticalSeekBar?, progress: Int)
-        fun onStartTrackingTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar?)
-        fun onStopTrackingTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar?)
+        fun onProgressChanged(segmentedPointsSeekBar: SegmentedVerticalSeekBar, progress: Int)
+        fun onStartTrackingTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar)
+        fun onStopTrackingTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar)
+        fun onStopTouch(segmentedPointsSeekBar: SegmentedVerticalSeekBar)
     }
 
     var value: Int
