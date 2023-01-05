@@ -3,25 +3,6 @@ plugins {
     id 'kotlin-android'
 }
 
-ext {
-    PUBLISH_GROUP_ID = 'io.github.smartsensesolutions'
-    PUBLISH_VERSION = '1.0.1'
-    PUBLISH_ARTIFACT_ID = 'SegmentedVerticalSeekBar'
-    PUBLISH_DESCRIPTION = 'Segmented Vertical SeekBar Android SDK'
-    PUBLISH_URL = 'https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo'
-    PUBLISH_LICENSE_NAME = 'Apache License'
-    PUBLISH_LICENSE_URL = 'https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/master/LICENSE'
-    PUBLISH_DEVELOPER_ID = 'sagarsmartsense'
-    PUBLISH_DEVELOPER_NAME = 'Sagar Maiyad'
-    PUBLISH_DEVELOPER_EMAIL = 'sagar.maiyad@smartsensesolutions.com'
-    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo.git'
-    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo.git'
-    PUBLISH_SCM_URL = 'https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo'
-}
-
-apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
-
-
 android {
     compileSdk 31
 
@@ -55,7 +36,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
