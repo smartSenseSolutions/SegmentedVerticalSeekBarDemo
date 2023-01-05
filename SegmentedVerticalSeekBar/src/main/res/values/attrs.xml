@@ -5,6 +5,9 @@
         <attr name="minValue" format="integer"/>
         <attr name="currentValue" format="integer" />
         <attr name="cornerRadius" format="dimension" />
+        <attr name="diameterStart" format="dimension"/>
+        <attr name="diameterStep" format="dimension"/>
+        <attr name="baselineAligned" format="boolean"/>
         <attr name="step" format="integer"/>
 
         <attr name="delimiterColor" format="color" />

@@ -3,10 +3,8 @@ package com.ss.svs
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 
 class SegmentedVerticalSeekBar : View {
@@ -14,19 +12,19 @@ class SegmentedVerticalSeekBar : View {
 
     private var mMaxValue = DEFAULT_MAX_VALUE
 
-    var step = 10
-
-    val paint = Paint()
-    val mPath = Path()
+    private val paint = Paint()
+    private val mPath = Path()
     private var mCornerRadius = 10f
-
     private var mCurrentValue = 0
     private var mEnabled = true
-    var mIsAllRadius = false
-    var mClockwise = false
-    var mPyramidViewEnable = false
+    private val baselineAligned = true
 
-    var mTouchDisabled = false
+    private var step = 1
+    private var mIsAllRadius = false
+    private var mClockwise = false
+    private var mPyramidViewEnable = false
+    private var mTouchDisabled = false
+
     private var mProgressSweep = 0f
     private var mProgressPaint: Paint? = null
     private var scrWidth = 0
@@ -36,14 +34,21 @@ class SegmentedVerticalSeekBar : View {
     private var backColor = 0
     private var firstRun = true
 
-    private var delimiterSize = DEFAULT_DELIMITER_SIZE
-
     private var delimiterColor = DEFAULT_DELIMITER_COLOR
 
     private var gapSize = DEFAULT_GAP_SIZE
 
-    private val segmentHeight: Int
-        get() = height / max - delimiterSize
+    private var circleDiameter = 53f
+    private var circleDiameterStep = 8f
+    private val circlesDiameters: List<Float>
+        get() = (0 until max).map {
+            circleDiameter + it * circleDiameterStep
+        }
+
+    private var xs: List<Float> = listOf()
+
+    private val delimiterSize: Float
+        get() = (width - circlesDiameters.sum()) / (max - 1)
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -66,8 +71,10 @@ class SegmentedVerticalSeekBar : View {
             mMaxValue = a.getInteger(R.styleable.SegmentedVerticalSeekBar_maxValue, mMaxValue)
             mMinValue = a.getInteger(R.styleable.SegmentedVerticalSeekBar_minValue, mMinValue)
             step = a.getInteger(R.styleable.SegmentedVerticalSeekBar_step, step)
+            circleDiameter = a.getDimension(R.styleable.SegmentedVerticalSeekBar_diameterStart, 20f)
+            circleDiameterStep = a.getDimension(R.styleable.SegmentedVerticalSeekBar_diameterStep, 0f)
             mCurrentValue = a.getInteger(R.styleable.SegmentedVerticalSeekBar_currentValue, mCurrentValue)
-            mCornerRadius = a.getDimension(R.styleable.SegmentedVerticalSeekBar_cornerRadius, mCornerRadius) as Float
+            mCornerRadius = a.getDimension(R.styleable.SegmentedVerticalSeekBar_cornerRadius, mCornerRadius)
             progressColor = a.getColor(R.styleable.SegmentedVerticalSeekBar_progressColor, progressColor)
             backColor = a.getColor(R.styleable.SegmentedVerticalSeekBar_backgroundColor, backColor)
             delimiterColor = a.getColor(R.styleable.SegmentedVerticalSeekBar_delimiterColor, delimiterColor)
@@ -98,16 +105,14 @@ class SegmentedVerticalSeekBar : View {
 
     override fun onDraw(canvas: Canvas) {
         gapSize = ((width /mMaxValue)/ 2)
-        if(mIsAllRadius){
-            drawContainerRectangles(canvas)
-            drawFilledRectangles(canvas)
-        }else{
+        if (mIsAllRadius) {
+            drawCircles(canvas)
+            drawFilledCircles(canvas)
+        } else {
             drawBackground(canvas)
             drawForeground(canvas)
             drawProgress(canvas)
-            drawDelimiter(canvas)
         }
-
 
         if (firstRun) {
             firstRun = false
@@ -115,114 +120,35 @@ class SegmentedVerticalSeekBar : View {
         }
     }
 
-    private fun drawContainerRectangles(canvas: Canvas) {
-        val mSegmentHeight = segmentHeight
-
-        var leftX = 0
-        var rightX = width
-        var topY = height
-        var botY = topY - mSegmentHeight
-
-        val containerRectanglePaint = buildRectanglePaint(backColor)
-        if(mPyramidViewEnable){
-            if(mClockwise){
-                for (i in 0 until max) {
-                    if(i>0){
-                        leftX += gapSize
-                        rightX -= gapSize
-                    }
-
-                    drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(),
-                        containerRectanglePaint)
-                    topY -= mSegmentHeight + delimiterSize
-                    botY = topY - mSegmentHeight
-                }
-            }else{
-                var lastLeftX = ((max - 1) * gapSize)
-                var lastrightX = (rightX - ((max - 1) * gapSize))
-
-                for (i in 0 until max) {
-                    if(i>0){
-                        lastLeftX -= gapSize
-                        lastrightX += gapSize
-                    }
-
-                    drawRoundedRect(canvas, lastLeftX.toFloat(), topY.toFloat(), lastrightX.toFloat(), botY.toFloat(),
-                        containerRectanglePaint)
-                    topY -= mSegmentHeight + delimiterSize
-                    botY = topY - mSegmentHeight
-                }
-            }
-        }else{
-            for (i in 0 until max) {
-                drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(),
-                    containerRectanglePaint)
-                topY -= mSegmentHeight + delimiterSize
-                botY = topY - mSegmentHeight
-            }
-        }
-    }
-
-
-    private fun drawFilledRectangles(canvas: Canvas) {
-        val mSegmentHeight = segmentHeight
-
-        var leftX = 0
-        var rightX = width
-        var topY = height
-        var botY = topY - mSegmentHeight
-
-        val fillRectanglePaint = buildRectanglePaint(progressColor)
-        if(mPyramidViewEnable){
-            if(mClockwise){
-                for (i in 0 until mCurrentValue) {
-                    if(i>0){
-                        leftX += gapSize
-                        rightX -= gapSize
-                    }
-                    drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(), fillRectanglePaint)
-                    topY -= mSegmentHeight + delimiterSize
-                    botY = topY - mSegmentHeight
-                }
-            }else{
-                var lastLeftX = ((max - 1) * gapSize)
-                var lastrightX = (rightX - ((max - 1) * gapSize))
-
-                for (i in 0 until mCurrentValue) {
-                    if(i>0){
-                        lastLeftX -= gapSize
-                        lastrightX += gapSize
-                    }
-                    drawRoundedRect(canvas, lastLeftX.toFloat(), topY.toFloat(), lastrightX.toFloat(), botY.toFloat(), fillRectanglePaint)
-                    topY -= mSegmentHeight + delimiterSize
-                    botY = topY - mSegmentHeight
-                }
-            }
-        }else{
-            for (i in 0 until mCurrentValue) {
-                drawRoundedRect(canvas, leftX.toFloat(), topY.toFloat(), rightX.toFloat(), botY.toFloat(), fillRectanglePaint)
-                topY -= mSegmentHeight + delimiterSize
-                botY = topY - mSegmentHeight
-            }
-        }
-    }
-
-    private fun drawRoundedRect(canvas: Canvas,
-        left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
-        canvas.drawRoundRect(RectF(left, top, right, bottom), cornerRadius.toFloat(), cornerRadius.toFloat(), paint)
-    }
-
-    private fun buildRectanglePaint(@ColorInt color: Int): Paint {
-        paint.color = color
+    private fun drawCircles(canvas: Canvas) {
+        paint.color = backColor
         paint.style = Paint.Style.FILL
-        return paint
+        xs = circlesDiameters.mapIndexed { i, d ->
+            circleDiameter / 2 + i * (d / 2 + delimiterSize + circleDiameter / 2)
+        }
+        circlesDiameters.forEachIndexed { i, d ->
+            val x = circleDiameter / 2f + i * (d / 2 + delimiterSize + circleDiameter / 2f)
+            val y = if (baselineAligned) (max - i - 1) * circleDiameterStep / 2f + height /2f else height / 2f
+            canvas.drawCircle(x, y, d / 2f, paint)
+        }
+    }
+
+    private fun drawFilledCircles(canvas: Canvas) {
+        paint.color = progressColor
+        paint.style = Paint.Style.FILL
+        for (i in 0 until mCurrentValue) {
+            val d = circlesDiameters[i]
+            val x = circleDiameter / 2f + i * (d / 2 + delimiterSize + circleDiameter / 2)
+            val y = if (baselineAligned) (max - i - 1) * circleDiameterStep / 2f + height /2f else height / 2f
+            canvas.drawCircle(x, y, d / 2f, paint)
+        }
     }
 
     private fun drawBackground(canvas: Canvas){
         mPath.addRoundRect(
             RectF(0f, 0f, scrWidth.toFloat(), scrHeight.toFloat()),
-            mCornerRadius.toFloat(),
-            mCornerRadius.toFloat(),
+            mCornerRadius,
+            mCornerRadius,
             Path.Direction.CCW
         )
         canvas.clipPath(mPath, Region.Op.INTERSECT)
@@ -235,23 +161,6 @@ class SegmentedVerticalSeekBar : View {
         canvas.drawRect(0f, 0f, scrWidth.toFloat(), scrHeight.toFloat(), paint)
     }
 
-    private fun drawDelimiter(canvas: Canvas){
-        // delimiters
-        paint.color = delimiterColor
-        if (mMaxValue > 1) {
-            val segmentHeight = scrHeight.toFloat() / mMaxValue
-            for (i in 1 until mMaxValue) {
-                val yPos = segmentHeight * i
-                canvas.drawRect(
-                    0F,
-                    yPos,
-                    scrWidth.toFloat(),
-                    yPos + delimiterSize,
-                    paint
-                )
-            }
-        }
-    }
     private fun drawProgress(canvas: Canvas){
         canvas.drawLine(
             (canvas.width / 2).toFloat(),
@@ -294,37 +203,20 @@ class SegmentedVerticalSeekBar : View {
         return false
     }
 
+    private fun convertTouchEventPoint(yPos: Float): Float {
+        return if (yPos < 0) 0f else if (yPos > scrWidth) scrWidth.toFloat() else yPos
+    }
+
     private fun updateOnTouch(event: MotionEvent) {
         isPressed = true
-        val mTouch = convertTouchEventPoint(event.y)
-        val progress = Math.round(mTouch).toInt()
-        updateProgress(progress)
+        updateProgress(convertTouchEventPoint(event.x))
     }
 
-    private fun convertTouchEventPoint(yPos: Float): Double {
-        val wReturn: Float
-        if (yPos > scrHeight * 2) {
-            wReturn = (scrHeight * 2).toFloat()
-            return wReturn.toDouble()
-        } else if (yPos < 0) {
-            wReturn = 0f
-        } else {
-            wReturn = yPos
+    private fun updateProgress(progress: Float) {
+        val xxs = circlesDiameters.mapIndexed { i, d ->
+            xs[i] - d / 2
         }
-        return wReturn.toDouble()
-    }
-
-    private fun updateProgress(progress: Int) {
-        var mProgress = progress
-        mProgressSweep = mProgress.toFloat()
-        mProgress = if (mProgress > scrHeight) scrHeight else mProgress
-        mProgress = if (mProgress < 0) 0 else mProgress
-
-        //convert progress to min-max range
-        mCurrentValue = mProgress * (mMaxValue - mMinValue) / scrHeight + mMinValue
-        //reverse value because progress is descending
-        mCurrentValue = mMaxValue + mMinValue - mCurrentValue
-        //if value is not max or min, apply step
+        getUpdated(xxs, progress)
         if (mCurrentValue != mMaxValue && mCurrentValue != mMinValue) {
             mCurrentValue = mCurrentValue - mCurrentValue % step + mMinValue % step
         }
@@ -335,15 +227,22 @@ class SegmentedVerticalSeekBar : View {
         invalidate()
     }
 
+    private fun getUpdated(xs: List<Float>, progress: Float) {
+        xs.forEachIndexed { index, x ->
+            if (progress <= x) {
+                mCurrentValue = index
+                return
+            }
+        }
+        mCurrentValue = max
+        return
+    }
+
     private fun updateProgressByValue(value: Int) {
         mCurrentValue = value
         mCurrentValue = if (mCurrentValue > mMaxValue) mMaxValue else mCurrentValue
         mCurrentValue = if (mCurrentValue < mMinValue) mMinValue else mCurrentValue
 
-        //convert min-max range to progress
-        mProgressSweep = ((mCurrentValue - mMinValue) * scrHeight / (mMaxValue - mMinValue)).toFloat()
-        //reverse value because progress is descending
-        mProgressSweep = scrHeight - mProgressSweep
         if (mOnValuesChangeListener != null) {
             mOnValuesChangeListener!!
                 .onProgressChanged(this, mCurrentValue)
@@ -429,7 +328,6 @@ class SegmentedVerticalSeekBar : View {
 
     companion object {
         val DEFAULT_DELIMITER_COLOR = Color.parseColor("#ffffff")
-        const val DEFAULT_DELIMITER_SIZE = 10
         const val DEFAULT_GAP_SIZE = 20
         const val DEFAULT_MAX_VALUE = 5
         const val DEFAULT_MIN_VALUE = 0

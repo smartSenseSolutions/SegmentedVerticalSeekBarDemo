@@ -13,25 +13,38 @@
         android:orientation="vertical"
         android:padding="15dp">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
         <com.ss.svs.SegmentedVerticalSeekBar
             android:id="@+id/svsLevelView"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="100dp"
             app:backgroundColor="@color/color_background"
             app:clockwise="true"
-            app:cornerRadius="10dp"
-            app:currentValue="2"
-            app:delimiterColor="@color/white"
+            app:currentValue="0"
+            app:diameterStart="@dimen/diameterStart"
+            app:diameterStep="@dimen/diameterStep"
             app:isAllRadius="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent"
             app:maxValue="5"
             app:progressColor="@color/color_progress"
             app:pyramidViewEnable="false"
-            app:step="1"
             app:touchDisabled="false" />
 
         <androidx.appcompat.widget.AppCompatTextView

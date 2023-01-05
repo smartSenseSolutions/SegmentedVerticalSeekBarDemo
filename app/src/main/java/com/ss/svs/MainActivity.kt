@@ -3,8 +3,6 @@ package com.ss.svs
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.ss.svs.databinding.ActivityMainBinding
 
@@ -97,17 +95,5 @@ class MainActivity : AppCompatActivity() {
         }else{
             activityMainBinding.btnClockWise.text = getString(R.string.clockwise)
         }
-    }
-
-    fun setBorder(v: View) {
-        val newValue = v.getTag().toString().toFloat()
-        activityMainBinding.svsLevelView.cornerRadius = newValue
-        Toast.makeText(this@MainActivity, "New corner radius is $newValue", Toast.LENGTH_SHORT).show()
-    }
-
-    fun setMax(v: View) {
-        val newValue: Int = Integer.valueOf(v.getTag().toString())
-        activityMainBinding.svsLevelView.max = newValue
-        Toast.makeText(this@MainActivity, "New max value is $newValue", Toast.LENGTH_SHORT).show()
     }
 }
