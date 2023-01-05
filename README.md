@@ -1,16 +1,6 @@
-# SegmentedVerticalSeekBar
+# CirclesSeekBar
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SegmentedVerticalSeekBarDemo-blue.svg?style=flat)](https://android-arsenal.com/details/3/8270) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21) [![Platform](https://img.shields.io/badge/Platform-Android-brightgreen)](https://developer.android.com/index.html) [![Licence](https://img.shields.io/badge/Licence-Apache--2.0-brightgreen)](https://opensource.org/licenses/Apache-2.0) 
-
-
-It is an Android Vertical Seekbar with segments developed in Kotlin. It offers multiple customization attributes to create a Slider/Seekbar based on your requirements.
-
-## Demo
-
-![First](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/1.gif)
-![Second](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/2.gif)
-![Third](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/3.gif)
-![Forth](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/4.gif)
+It is an Android Seekbar developed in Kotlin
 
 ## Setup
 
@@ -25,12 +15,10 @@ allprojects {
 
 Add the dependency in your app ```build.gradle``` file:
 ``` gradle
-implementation 'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.1'
+implementation 'com.github.Greenev:CirclesSeekBar:0.0.1'
 
 ```
 ## Usage
-
-Sample implementation [here](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/tree/main/app)
 
 Use the view in your layout.xml by declaring:
 
@@ -83,11 +71,7 @@ svsLevelView.setOnBoxedPointsChangeListener(object :
 
 Following are the various attributes available to customize the look and feel of the Seekbar.
 
-**maxValue:** Maximum value of segments to be drawn for the Seekbar View.
-
 **currentValue:** Current value of the Progress in Seekbar. It can be used to set the default current progress in the seekbar and using this attributes getter, the updated progress value can be captured
-
-**cornerRadius:** Radius property for curving the borders of Seekbar
 
 **step:** Incremental value for progress on user’s drag. For example, if set to “2” it will increase 2 steps of progress in the Seekbar.
 
@@ -106,19 +90,9 @@ Following are the various attributes available to customize the look and feel of
 **touchDisabled:** Boolean value to allow the progress of Seekbar only using scroll motion and not the touch/press event.
 
 **enabled:** Boolean to enable/disable the Seekbar view completely.
- 
- 
-## MAD (Modern Android Development) Scorecard 
- 
-![Mad Score](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/blob/main/preview/mad_score.png)
 
-## iOS Library
-
-Check our iOS Library also [SSVerticalSegmentsSlider](https://github.com/smartSenseSolutions/SSVerticalSegmentsSlider)
- 
 ## License
 ```
-Copyright 2021 SmartSense Solutions
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
