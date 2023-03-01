@@ -2,4 +2,5 @@
 <resources>
     <dimen name="diameterStart">20dp</dimen>
     <dimen name="diameterStep">4dp</dimen>
+    <dimen name="textMargin">20dp</dimen>
 </resources>

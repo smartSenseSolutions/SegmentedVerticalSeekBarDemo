@@ -9,7 +9,6 @@
     <string name="anti_clockwise">Anti Clockwise</string>
     <string name="clockwise">Clockwise</string>
     <string name="radius_for_all">Radius for all</string>
+    <string name="max_4">Max 4</string>
     <string name="max_5">Max 5</string>
-    <string name="max_10">Max 10</string>
-    <string name="max_20">Max 20</string>
 </resources>

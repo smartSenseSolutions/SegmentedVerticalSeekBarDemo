@@ -4,21 +4,21 @@
         <attr name="maxValue" format="integer" />
         <attr name="minValue" format="integer"/>
         <attr name="currentValue" format="integer" />
-        <attr name="cornerRadius" format="dimension" />
         <attr name="diameterStart" format="dimension"/>
         <attr name="diameterStep" format="dimension"/>
+        <attr name="legendStart" format="integer"/>
+        <attr name="legendStep" format="integer"/>
+        <attr name="legendTextSize" format="dimension"/>
+        <attr name="legendMarginBottom" format="dimension"/>
+        <attr name="legendTextColor" format="color" />
         <attr name="baselineAligned" format="boolean"/>
         <attr name="step" format="integer"/>
 
-        <attr name="delimiterColor" format="color" />
         <attr name="progressColor" format="color" />
         <attr name="backgroundColor" format="color" />
 
-        <attr name="clockwise" format="boolean" />
         <attr name="enabled" format="boolean" />
         <attr name="touchDisabled" format="boolean" />
-        <attr name="isAllRadius" format="boolean" />
-        <attr name="pyramidViewEnable" format="boolean"/>
 
     </declare-styleable>
 

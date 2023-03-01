@@ -7,7 +7,6 @@
         <attr name="cornerRadius" format="dimension" />
         <attr name="step" format="integer"/>
 
-        <attr name="delimiterColor" format="color" />
         <attr name="progressColor" format="color" />
         <attr name="backgroundColor" format="color" />
 
