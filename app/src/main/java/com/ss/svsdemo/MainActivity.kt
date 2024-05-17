@@ -1,4 +1,4 @@
-package com.ss.svs
+package com.ss.svsdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.ss.svs.databinding.ActivityMainBinding
+import com.ss.svsdemo.R
+import com.ss.svs.SegmentedVerticalSeekBar
+import com.ss.svsdemo.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
