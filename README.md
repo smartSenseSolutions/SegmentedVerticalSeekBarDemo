@@ -28,6 +28,13 @@ Add the dependency in your app ```build.gradle``` file:
 implementation 'io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.2'
 
 ```
+
+Add the dependency in your app ```build.gradle.kts``` file:
+``` gradle
+implementation("io.github.smartsensesolutions:SegmentedVerticalSeekBar:1.0.2")
+
+```
+
 ## Usage
 
 Sample implementation [here](https://github.com/smartSenseSolutions/SegmentedVerticalSeekBarDemo/tree/main/app)
